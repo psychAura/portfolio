@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kausara Kpabia | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    :root {
+      --french-laundry: #3a4660;
+      --comfortably-tan: #c9af98;
+      --peachy-kreme: #ed8a63;
+      --brown-bonnet: #845007;
+      --cyan: #72E5F2;
+      --default: rgba(2, 59, 63, 0.8);
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #fffdf6;
+      color: var(--french-laundry);
+    }
+
+    a { transition: color 0.3s; color: var(--french-laundry); text-decoration: none; }
+    a:hover { color: var(--peachy-kreme); }
+
+    header a.active { color: var(--peachy-kreme); font-weight: 600; }
+
+    /* Hero */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 5rem 1rem;
+      background: url('pngegg.png') center/cover no-repeat;
+      position: relative;
+      text-align: center;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(20, 94, 90, 0.6); /* french-laundry overlay */
+      z-index: 0;
+    }
+    #hero > * { position: relative; z-index: 1; color: #fff; }
+
+    #hero-text h1 span { color: var(--peachy-kreme); }
+
+    .headshot {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .headshot:hover { transform: scale(1.05); }
+
+    section { padding: 3rem 1.5rem; position: relative; }
+    section h2 {
+    color: var(--peachy-kreme);
+    }
+
+    section p,
+    section li,
+    section h3,
+    section a {
+      color: rgba(2, 59, 63, 0.8); /* same as project/blog content */
+    }
+
+    #tech h3 {
+    color: rgba(2, 59, 63, 0.8);
+    }
+    /* Line Separator */
+    section + section::before {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 80%;
+      max-width: 800px;
+      background-color: var(--comfortably-tan)/50;
+      margin: 0 auto 3rem;
+    }
+        /* Section Headings */
+    #projects h2,
+    #blog h2,
+    #contact h2 {
+      color: var(--peachy-kreme);
+    }
+
+    /* Card Titles */
+    .project-card h3,
+    .blog-card h3 {
+      color:rgba(2, 59, 63, 0.8); /* optional: dark for contrast */
+    }
+
+    /* Card Text (description + stack) */
+    .project-card p,
+    .blog-card p {
+      color: rgba(2, 59, 63, 0.8); /* overlay color for subtle contrast */
+    }
+
+    /* Links inside cards */
+    .project-card a,
+    .blog-card a {
+      color: var(--peachy-kreme);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .project-card a:hover,
+    .blog-card a:hover {
+      color: var(--brown-bonnet);
+    }
+
+    /* Project & Blog Cards */
+    .project-card, .blog-card {
+      background-color: #fdfbf2;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover, .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+        /* Typing animation */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero-line {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 4px solid var(--peachy-kreme); /* blinking cursor color */
+      width: 0;
+      animation: typing 2s steps(20) forwards;
+    }
+
+    /* Remove cursor after typing */
+    .hero-line::after {
+      content: '';
+      animation: none;
+      border: none;
+    }
+    /* Highlight color for last name */
+    .highlight {
+      color: var(--peachy-kreme);
+    }
+
+
+    .tech-icon { width: 40px; height: 40px; margin: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-brown-bonnet/90 fixed w-full z-50 shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-center py-4">
+    <nav class="space-x-6 font-medium text-lg flex flex-wrap justify-center">
+      <a href="#hero">Home</a>
+      <a href="#contact">Contact</a>
+      <a href="Kausara Kpabia -CV.pdf">Download CV</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" class="flex flex-col items-center justify-center min-h-screen px-4 relative text-center">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-[rgba(58,70,96,0.6)] z-0"></div>
+
+  <!-- Hero Text -->
+  <div class="relative z-10">
+    <h2 class="text-2xl md:text-4xl mb-4 text-white">Software Engineer</h2>
+    <h1 class="text-5xl md:text-6xl font-bold hero-line text-white">
+      Kausara <span class="highlight">Kpabia</span>
+    </h1>
+    <p class="max-w-md mx-auto mt-6 text-lg md:text-xl text-white">
+    I build efficient softwares for everyday problems.
+    </p>
+  </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects">
+  <h2 class="text-4xl font-bold mb-12 text-center">Selected Projects</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="project-card" data-aos="fade-up" data-aos-once="true">
+      <img src="flydream.png" alt="FlyDream" class="rounded-lg mb-4 object-cover h-40 w-full">
+      <h3 class="font-semibold text-xl mb-2">FlyDream</h3>
+      <p class="mb-2">a full stack web application for users to search, book, and manage flights with dynamic UI</p>
+      <p class="text-sm mb-2"><strong>Stack:</strong> Django, PostgreSQL, TailwindCSS, JS, HTML, Git, Render</p>
+      <a href="https://github.com/psychAura/FlyDream_Airline_System" target="_blank" class="text-peachy-kreme font-semibold">GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+      <img src="chapters.png" alt="Chapters" class="rounded-lg mb-4 object-cover h-40 w-full">
+      <h3 class="font-semibold text-xl mb-2">Chapters</h3>
+      <p class="mb-2">full-stack Ruby on Rails application that integrates with the New York Times Books API to deliver the current bestsellers across multiple genres.</p>
+      <p class="text-sm mb-2"><strong>Stack:</strong> Rails, Tailwind, PostgreSQL</p>
+      <a href="https://github.com/psychAura/chapters.io" target="_blank" class="text-peachy-kreme font-semibold">GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+      <img src="sms.jpg" alt="School Management System" class="rounded-lg mb-4 object-cover h-40 w-full">
+      <h3 class="font-semibold text-xl mb-2">School Management System</h3>
+      <p class="mb-2">A Laravel/Filament system for all school processes with user roles and dashboards.</p>
+      <p class="text-sm mb-2"><strong>Stack:</strong> PHP, Laravel, Filament, TailwindCSS, Vue.js, Livewire, PostgreSQL</p>
+      <a href="https://github.com/psychAura/join" target="_blank" class="text-peachy-kreme font-semibold">GitHub</a>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+      <img src="join.jpg" alt="join" class="rounded-lg mb-4 object-cover h-40 w-full">
+      <h3 class="font-semibold text-xl mb-2">join</h3>
+      <p class="mb-2">A rails web app to create private events, invite and manage attendees</p>
+      <p class="text-sm mb-2"><strong>Stack:</strong> Rails, Tailwind, PostgreSQL</p>
+      <a href="https://github.com/psychAura/join" target="_blank" class="text-peachy-kreme font-semibold">GitHub</a>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+      <img src="halalfoodbot.jpg" alt="Halal Food Bot" class="rounded-lg mb-4 object-cover h-40 w-full">
+      <h3 class="font-semibold text-xl mb-2">Halal Food Bot</h3>
+      <p class="mb-2">A web-based food ordering system for seamless halal food ordering and processing.</p>
+      <p class="text-sm mb-2"><strong>Stack:</strong> Node.js (Express.js),  MongoDB, JWT. Render</p>
+      <a href="https://github.com/psychAura/HalalFood-Bot" target="_blank" class="text-peachy-kreme font-semibold">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog">
+  <h2 class="text-4xl font-bold mb-8 text-center">Articles</h2>
+  <div class="max-w-4xl mx-auto">
+    <div class="blog-card mb-6">
+      <h3 class="font-semibold text-xl mb-2">Understanding related_name in Django: The Cleanest Way to Access Related Data</h3>
+      <p class="mb-2 text-sm text-gray-700">When I first started working with Django, relationships between models...</p>
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7329567967350886400/" target="_blank" class="text-peachy-kreme font-semibold">Read More</a>
+    </div>
+
+    <div class="blog-card mb-6">
+      <h3 class="font-semibold text-xl mb-2">Django Templates vs React Frontend</h3>
+      <p class="mb-2 text-sm text-gray-700">If you're building web apps with Django, you've likely used its built-in templating system to serve HTML pages ...</p>
+      <a href="https://www.linkedin.com/posts/kausarakpabia_django-activity-7357393536415154176-zwgu?utm_source=share&utm_medium=member_desktop&rcm=ACoAACbRuFwBRiXi_ftvD95jK_ngf5zJheiyuJ8" target="_blank" class="text-peachy-kreme font-semibold">Read More</a>
+    </div>
+    
+    <div class="blog-card mb-6" >
+      <h3 class="font-semibold text-xl mb-2">How Data Analysts Can Restructure Data from MongoDB</h3>
+      <p class="mb-2 text-sm text-gray-700">Working with MongoDB can be challenging because its a NoSQL database that stores data in JSON-like...</p>
+      <a href="https://medium.com/@kausarakpabia/how-data-analysts-can-restructure-data-from-mongodb-02f07399e141" target="_blank" class="text-peachy-kreme font-semibold">Read More</a>
+    </div>
+
+    <div class="blog-card mb-6" >
+      <h3 class="font-semibold text-xl mb-2">Machine Learning Data Preprocessing: A Beginner Guide</h3>
+      <p class="mb-2 text-sm text-gray-700">Data preprocessing is the foundation of any successful machine learning project. A model is as good as the data that trained it...</p>
+      <a href="https://medium.com/@kausarakpabia/machine-learning-data-preprocessing-a-beginners-guide-fdc997053ef5" target="_blank" class="text-peachy-kreme font-semibold">Read More</a>
+    </div>
+  </div>
+</section>
+<!-- Education Section -->
+<section id="education" class="bg-brown-bonnet/10 py-16">
+  <h2 class="text-4xl font-bold mb-12 text-center text-default">Education</h2>
+  <div class="relative max-w-4xl mx-auto">
+    
+    <!-- Education Items -->
+    <div class="space-y-12">
+      <!-- Item 1 -->
+      <div class="flex flex-col md:flex-row items-center md:items-start md:justify-start relative" data-aos="fade-right" data-aos-once="true">
+        <div class="flex-shrink-0 w-8 h-8 bg-peachy-kreme rounded-full border-2 border-brown-bonnet z-10"></div>
+        <div class="mt-4 md:mt-0 md:ml-8 text-center md:text-left">
+          <h3 class="text-2xl font-semibold text-default">MSc. Computer Science</h3>
+          <p class="text-lg text-default/80">University of Ghana, Legon</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="flex flex-col md:flex-row items-center md:items-start md:justify-start relative" data-aos="fade-left" data-aos-once="true">
+        <div class="flex-shrink-0 w-8 h-8 bg-peachy-kreme rounded-full border-2 border-brown-bonnet z-10"></div>
+        <div class="mt-4 md:mt-0 md:ml-8 text-center md:text-left">
+          <h3 class="text-2xl font-semibold text-french-laundry">BSc. Medical Laboratory Science</h3>
+          <p class="text-lg text-french-laundry/80">University of Cape Coast</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Tech Stack Section -->
+<section id="tech">
+  <h2 class="text-4xl font-bold mb-8 text-center">Tech Stack</h2>
+
+  <h3 class="text-2xl font-semibold mb-4 text-center">Languages</h3>
+  <div class="flex flex-wrap justify-center items-center">
+    <img src="icons/php-original.svg" alt="PHP" class="tech-icon">
+    <img src="icons/java-original.svg" alt="Java" class="tech-icon">
+    <img src="icons/csharp-original.svg" alt="C#" class="tech-icon">
+    <img src="icons/python-original.svg" alt="Python" class="tech-icon">
+    <img src="icons/ruby-original.svg" alt="Ruby" class="tech-icon">
+    <img src="icons/javascript-original.svg" alt="JavaScript" class="tech-icon">
+  </div>
+
+  <h3 class="text-2xl font-semibold mb-4 text-center mt-8">Frameworks</h3>
+  <div class="flex flex-wrap justify-center items-center">
+    <img src="icons/laravel-original.svg" alt="Laravel" class="tech-icon">
+    <img src="icons/filamentphp-original.svg" alt="Filament" class="tech-icon">
+    <img src="icons/spring-original.svg" alt="Springboot" class="tech-icon">
+    <img src="icons/dotnetcore-original.svg" alt=".NET" class="tech-icon">
+    <img src="icons/django-plain-wordmark.svg" alt="Django" class="tech-icon">
+    <img src="icons/rails-original-wordmark.svg" alt="Rails" class="tech-icon">
+    <img src="icons/express-original.svg" alt="Express" class="tech-icon">
+  </div>
+
+  <h3 class="text-2xl font-semibold mb-4 text-center mt-8">Databases</h3>
+  <div class="flex flex-wrap justify-center items-center">
+    <img src="icons/mysql-original.svg" alt="MySQL" class="tech-icon">
+    <img src="icons/postgresql-original.svg" alt="PostgreSQL" class="tech-icon">
+    <img src="icons/mongodb-original.svg" alt="MongoDB" class="tech-icon">
+    <img src="icons/oracle-original.svg" alt="Oracle" class="tech-icon">
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2 class="text-4xl font-bold mb-8 text-center">Contact Me</h2>
+  <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+    <a href="mailto:kausara931@gmail.com" class="px-6 py-3 bg-peachy-kreme text-french-laundry font-semibold rounded-lg hover:bg-brown-bonnet">Email Me</a>
+    <a href="https://github.com/psychAura" target="_blank" class="px-6 py-3 bg-peachy-kreme text-french-laundry font-semibold rounded-lg hover:bg-brown-bonnet">GitHub</a>
+    <a href="https://linkedin.com/in/kausarakpabia/" target="_blank" class="px-6 py-3 bg-peachy-kreme text-french-laundry font-semibold rounded-lg hover:bg-brown-bonnet">LinkedIn</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-6 text-center mt-12 border-t border-comfortably-tan/40">
+  <p>&copy; 2025 Kausara Kpabia | All rights reserved</p>
+</footer>
+
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+</body>
+</html>
